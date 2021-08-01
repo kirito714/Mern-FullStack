@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Jumbotron, Container, CardColumns, Card, Button } from 'react-bootstrap';
 
-import { getMe, deleteBook } from '../utils/API';
+// import { getMe, deleteBook } from '../utils/API';
+import { deleteBook, getMe } from '../../server/schemas/resolvers';
 import Auth from '../utils/auth';
-import { removeBookId } from '../utils/localStorage';
+
 
 const SavedBooks = () => {
   const [userData, setUserData] = useState({});
@@ -51,10 +52,10 @@ const SavedBooks = () => {
         throw new Error('something went wrong!');
       }
 
-      const updatedUser = await response.json();
-      setUserData(updatedUser);
-      // upon success, remove book's id from localStorage
-      removeBookId(bookId);
+      // const updatedUser = await response.json();
+      // setUserData(updatedUser);
+      // // upon success, remove book's id from localStorage
+      // removeBookId(bookId);
     } catch (err) {
       console.error(err);
     }
